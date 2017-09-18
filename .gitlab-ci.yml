@@ -14,7 +14,7 @@ build:
   script:
     - docker build -t $IMAGE_TAG .
 
-deploy:
+deploy_latest:
   stage: deploy
   tags:
     - docker
@@ -25,3 +25,15 @@ deploy:
     - docker push $RELEASE_IMAGE_TAG
   only:
     - master
+
+deploy_tags:
+  stage: deploy
+  tags:
+    - docker
+  variables:
+    RELEASE_IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_TAG
+  script:
+    - docker tag $IMAGE_TAG $RELEASE_IMAGE_TAG
+    - docker push $RELEASE_IMAGE_TAG
+  only:
+    - tags
