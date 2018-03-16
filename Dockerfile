@@ -24,6 +24,7 @@ RUN apk add --no-cache \
     libwebp-dev \
     tiff-dev \
     libressl-dev \
+	&& export LIBRARY_PATH=/lib \
 	&& pip install thumbor==$THUMBOR_VERSION \
 	&& apk del gcc *-dev \
 	&& rm -rf /var/cache/apk/* \
