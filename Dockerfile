@@ -1,10 +1,10 @@
-FROM alpine:3.6
+FROM alpine:3.9
 
 EXPOSE 80
 
 CMD ["thumbor", "-l", "info", "-p", "80", "-c", "/etc/thumbor.conf"]
 
-ENV THUMBOR_VERSION 6.3.2
+ENV THUMBOR_VERSION 6.7.0
 
 RUN apk add --no-cache \
 		python \
